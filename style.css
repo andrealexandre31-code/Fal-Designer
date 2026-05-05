@@ -46,16 +46,17 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(253,250,247,0.7), rgba(253,250,247,0.7)), 
-                url('https://unsplash.com');
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url('img/banner-nail.png');
     background-size: cover;
     background-position: center;
 }
 
-.hero h1 {
+.hero h1, .hero p , .tagline {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.5rem, 6vw, 4rem);
     margin: 15px 0;
+    color: #ffffff;
 }
 
 .tagline { color: var(--gold); text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; font-weight: 600; }
