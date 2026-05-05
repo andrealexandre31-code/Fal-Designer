@@ -181,19 +181,14 @@ body {
     box-shadow: 0 16px 40px rgba(45, 42, 38, 0.10);
 }
 
-.card-icon-wrap {
-    width: 52px;
-    height: 52px;
-    background: #f4eee8;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
+/* Ícone Font Awesome dentro do card */
+.card-icon-wrap i {
+    font-size: 22px;
+    color: var(--gold);
 }
 
-.service-card.active .card-icon-wrap {
-    background: var(--dark);
+.service-card.active .card-icon-wrap i {
+    color: var(--gold);
 }
 
 .card-badge {
@@ -214,8 +209,9 @@ body {
     color: var(--dark);
 }
 
+/* Texto do card maior */
 .service-card p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;  /* era 0.8rem */
     color: #8a7d72;
     line-height: 1.7;
 }
