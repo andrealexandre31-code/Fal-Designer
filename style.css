@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
 :root {
     --nude-bg: #fdfaf7;
     --gold: #c5a059;
@@ -6,50 +13,148 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--nude-bg);
-    color: var(--dark);
-    margin: 0;
+    background-color: #f8f7f2; /* Cor de fundo creme da imagem */
+    color: #333;
 }
 
-/* ─── NAVBAR ─────────────────────────────────────────── */
+/* Importação de fontes de alta qualidade */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;500;600&display=swap');
+
+:root {
+    --accent-color: #C5A059; /* Dourado Champanhe */
+    --dark-bg: #0a0a0a;
+    --text-light: #ffffff;
+    --nav-height: 90px;
+}
+/* Navbar estilizada conforme a imagem */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
+    border-radius: 0 0 40px 40px;
+    margin: 0 20px;
 }
 
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+.logo-main {
+    font-size: 1.8rem;
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-.logo span {
-    color: var(--gold);
-    font-weight: 300;
+.logo-sub {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: #c5a059;
+    font-weight: 400;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 30px;
-    align-items: center;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--dark);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+/* Estilo do Botão Flutuante */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px; /* Distância do fundo */
+    right: 30px;  /* Distância da direita */
+    z-index: 9999;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.whatsapp-content {
+    background-color: #25D366; /* Cor oficial WhatsApp */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    border: 2px solid #ffffff;
+}
+
+.whatsapp-text {
     font-size: 0.8rem;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Efeito de Interação */
+.whatsapp-float:hover .whatsapp-content {
+    transform: scale(1.05) translateY(-5px);
+    background-color: #1ebe57;
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+}
+
+/* Animação de Atenção (Pulsação) */
+@keyframes pulse-whatsapp {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-content {
+    animation: pulse-whatsapp 2s infinite;
+}
+
+/* Responsividade: Diminuir um pouco em telas pequenas */
+@media (max-width: 480px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .whatsapp-text {
+        display: none; /* Em celulares muito pequenos, mostra apenas o ícone ou texto curto */
+    }
+    
+    .whatsapp-content {
+        padding: 15px;
+    }
+}
+
+/* Menu Toggle (Mobile) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 1px; /* Linhas ultra finas são mais modernas */
+    background: var(--text-light);
+    transition: 0.3s;
+}
+
+/* Responsividade */
+@media (max-width: 968px) {
+    .nav-links {
+        display: none; /* Idealmente controlado por JS ou Checkbox */
+    }
+    .menu-toggle {
+        display: flex;
+    }
 }
 
 /* ─── HERO ───────────────────────────────────────────── */
@@ -240,56 +345,84 @@ body {
 
 .img-wrapper {
     overflow: hidden;
-    border-radius: 28px;
-    height: 300px;
+    border-radius: 24px; /* Raio levemente menor é a tendência atual */
+    height: 350px;
     position: relative;
-    border: 0.5px solid #e0d4c4;
+    /* Borda ultra fina e translúcida (Glassmorphism) */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #f0f0f0;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+    cursor: pointer;
 }
 
 .img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
-    filter: grayscale(10%);
+    /* Interação moderna: a imagem começa suave e ganha nitidez */
+    filter: brightness(0.9) contrast(1.1);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.img-wrapper:hover {
+    /* Elevação suave sem parecer "sujo" */
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .img-wrapper:hover img {
-    transform: scale(1.07);
-    filter: grayscale(0);
+    transform: scale(1.12);
+    filter: brightness(1) contrast(1);
 }
 
 .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(45, 42, 38, 0);
+    /* Gradiente moderno: do transparente para um esfumaçado elegante */
+    background: linear-gradient(
+        to top, 
+        rgba(0, 0, 0, 0.4) 0%, 
+        rgba(0, 0, 0, 0) 60%
+    );
     display: flex;
     align-items: flex-end;
-    padding: 20px;
-    transition: background 0.3s;
-    border-radius: 28px;
+    justify-content: center; /* Centraliza a tag para um look editorial */
+    padding: 30px;
+    opacity: 0;
+    transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+    border-radius: 24px;
 }
 
 .img-wrapper:hover .overlay {
-    background: rgba(45, 42, 38, 0.35);
+    opacity: 1;
+    backdrop-filter: blur(4px); /* Desfoque leve no fundo ao focar */
 }
 
 .overlay-tag {
-    font-size: 0.65rem;
-    letter-spacing: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--white);
-    opacity: 0;
-    transition: opacity 0.3s;
-    background: rgba(197, 160, 89, 0.9);
-    padding: 5px 12px;
-    border-radius: 20px;
+    color: #ffffff;
+    
+    /* Efeito de Vidro na Tag (Frosted Glass) */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    /* Animação de subida da tag */
+    transform: translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .img-wrapper:hover .overlay-tag {
-    opacity: 1;
+    transform: translateY(0);
 }
-
 .portfolio-cta {
     text-align: center;
     margin-top: 40px;
